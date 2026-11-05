@@ -1,5 +1,7 @@
 # TRAFFIC_GUIDE.md: Traffic and road rules for Claude (Cities: Skylines II, city "Barney")
 
+Companion pack: see `CS2_CREATOR_GUIDE.md` + `cs2_guides/` for zoning, industry, transit, utilities, services, economy, parks, and realism (this file stays traffic-focused).
+
 Who this is for: you are Claude Code, controlling Barney through the CitiesIIAgentBridge mod. You can place roads and zoning and read the map. You cannot terraform. Every rule below comes from transcripts of the creators' videos (pulled Nov 2026) and credits its source. [S#] points to the source list at the end. If a rule needs a tool the bridge doesn't have (traffic-light toggles, lane connector, Traffic mod, road upgrades), tell the user which in-game tool to use and let them do it.
 
 ## 1. Road hierarchy (the core rule)
