@@ -30,6 +30,7 @@ Link modes at hubs; do not run duplicative parallel services on the same corrido
 - Metro does not share road space — plan station catchment and transfers to bus/tram/train. [S15]
 - Poorly planned metro is costly; plan lines before digging. [S15]
 - Always leave expansion room for stations and yards. [S15]
+- **Full subway mechanics, depths, yard spine, and multi-line hubs:** see [`../SUBWAY_GUIDE.md`](../SUBWAY_GUIDE.md) + `subway_network_blueprint.png`.
 
 ## Airports & campuses
 - Airports need highway/cargo thinking and lots of land. [S23]

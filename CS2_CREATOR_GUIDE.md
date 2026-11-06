@@ -10,6 +10,7 @@ This pack summarizes practical advice from **~30 creative and realistic CS2 YouT
 3. For deep traffic/highway/intersection rules, open **`TRAFFIC_GUIDE.md`** (do not duplicate it).
 4. For the Ephrata PA replica, also follow **`ephrata/EPHRATA.md`**.
 4b. For a large airport campus, follow **`INTERNATIONAL_AIRPORT_GUIDE.md`** + `international_airport_blueprint.png`.
+4c. For metro/subway networks, follow **`SUBWAY_GUIDE.md`** + `subway_network_blueprint.png`.
 5. **Ask the user before:** buying map tiles, large demolitions, major budget/tax changes, deleting signature buildings, or anything irreversible that costs a lot.
 6. After each phase: survey Barney (map, demand, traffic, services), report findings, then propose the next action.
 
@@ -29,6 +30,7 @@ This pack summarizes practical advice from **~30 creative and realistic CS2 YouT
 | [cs2_guides/03_industry_cargo.md](cs2_guides/03_industry_cargo.md) | Industry, specialized industry, cargo, ports |
 | [cs2_guides/04_transit.md](cs2_guides/04_transit.md) | Bus, tram, metro, train, taxi, ferry, airport |
 | [INTERNATIONAL_AIRPORT_GUIDE.md](INTERNATIONAL_AIRPORT_GUIDE.md) | Full International Airport campus + terrain heights + blueprint |
+| [SUBWAY_GUIDE.md](SUBWAY_GUIDE.md) | Subway/metro lines, stations, depths, multi-line hubs + blueprint |
 | [cs2_guides/05_utilities.md](cs2_guides/05_utilities.md) | Power, water, sewage, garbage, telecom |
 | [cs2_guides/06_services.md](cs2_guides/06_services.md) | Police, fire, health, education, deathcare |
 | [cs2_guides/07_economy_happiness.md](cs2_guides/07_economy_happiness.md) | Taxes, budget, rent, labor, wellbeing |
