@@ -10,6 +10,7 @@ Confirm **power + water + sewage** coverage. Garbage soon after. [S01][S17]
 - Large plants (nuclear-scale examples) still need multiple transformers. [S31]
 - Geothermal needs groundwater — protect those aquifers from industry pollution. [S01]
 - Creative siting: waterfront + rail-served plants read realistic (OVERCHARGED EGG). [S23]
+- Full electricity planning and build procedure: [POWER_GRID_GUIDE.md](../POWER_GRID_GUIDE.md) with [blueprint](../power_grid_blueprint.png). Verify live MW/MWh ratings; do not use batteries as transformers.
 
 ## Water
 - Cannot import water like early power; build pumps/towers and pipe under roads. [S01]
