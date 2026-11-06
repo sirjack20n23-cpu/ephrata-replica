@@ -2,7 +2,7 @@
 
 Who this is for: you are **Claude Code**, controlling Barney through **CitiesIIAgentBridge 0.5.0 community**. This guide covers **how subway trains and lines work**, **how each station type connects**, and **how to connect multiple lines without killing throughput**. Cite sources at the end. **Do not invent numbers.** Prefer live `get_prefab_details` / in-game tooltips when they disagree with older guides.
 
-Companions: `cs2_guides/04_transit.md`, `TRAFFIC_GUIDE.md`, `INTERNATIONAL_AIRPORT_GUIDE.md`, `TERRAFORMING.md`, blueprint `subway_network_blueprint.png`.
+Companions: `cs2_guides/04_transit.md`, `TRAFFIC_GUIDE.md`, `INTERNATIONAL_AIRPORT_GUIDE.md`, `TERRAFORMING.md`, blueprint `subway_network_blueprint.png`, snap demo `subway_station_snap_guide.mp4`.
 
 ---
 
@@ -224,6 +224,52 @@ Assume downtown / Ephrata districts + future link toward **Barney International 
 
 ---
 
+
+---
+
+## 6b. Drawing & snapping subway track into an existing Underground Station
+
+**Watch:** [`subway_station_snap_guide.mp4`](subway_station_snap_guide.mp4) — 30 s HD demo (Underground View, snap rings, wrong-depth mistake, foolproof start-at-node method, Claude bridge note).
+
+Vanilla underground platforms sit at about **H₀ − 20 m**. Horizontal snapping does **not** always fix elevation (Paradox: stacked networks are intentional, so snap can lock X/Z while depth is still wrong). Foolproof method: **start the draw on the station’s end-node** so the tool inherits **−20 m**, then pull out. [Wiki −20 m][Steam][Reddit][Paradox forum][GameRant]
+
+### UI setup (user)
+1. Select **Two-Way (double) Subway Track**.
+2. Turn on **Underground View** (Underground Mode icon / x-ray when track tool is active; PageDown-style underground inspect as needed).
+3. Set elevation step fine (**1.25 m**) and elevation readout to **−20.0 m** before connecting into a vanilla UG station (use **−30.0 m** only for stacked Line B stations).
+4. Snapping toolbar:
+   - **Snap to Existing Geometry = ON** (required — cursor must lock to the station stub / end-node).
+   - **Snap to Guidelines = ON** (helps pull straight along the platform axis).
+   - **Snap to Zoning Cell Length = OFF** if the zone grid fights the track angle.
+   - **Snap to 90° Angles = OFF** if the street grid is not aligned with the station.
+
+### Foolproof click order
+1. Zoom/orbit until you see the **gray underground platform box** under the tiny **3×2** surface entrance.
+2. Hover the **short end** of that box until the **snap circle** highlights on the built-in track end-node → **Click #1**. Depth should read **−20.0 m**.
+3. Pull **straight ~30–50 m** along the platform centerline / white guideline → **Click #2** (locks a clean lead-out).
+4. Curve gently toward the next station (avoid sharp corners / pure straight-tool kinks). [GameRant]
+5. Set elevation **−20 m**, approach the second station **nearly straight on its axis**, hover its end-node snap ring → **Click #3**. Preview should weld into the station’s dual rails / crossover.
+6. Alternate reliable pattern: **draw out from each station separately and meet in the middle** at matching absolute depth. [Reddit]
+
+### Mistakes that cause Overlapping / Invalid shape / no weld
+- Starting in open ground at **0 / −10 m** and dragging toward the station without hitting the end-node — track passes **above** the −20 m platform. [GameRant][Steam]
+- Sharp sideways angle into the platform end.
+- **Snap to Existing Geometry OFF**.
+- Absolute depth drift on hills (segment keeps absolute height — adjust end elevation). [GameRant]
+- Demolishing without Underground Mode (wipes surface buildings). [GameRant]
+
+### Claude / CitiesIIAgentBridge procedure
+1. `place_building` Underground Subway Station; note position/rotation from result / `inspect_entity`.
+2. `get_network` / `get_network_edges` near the station (`x,z,radius`) to find stub **endpoint node IDs** and coordinates on the subway prefab.
+3. `build_network` with subway double-track prefab:
+   - `start` = station stub endpoint (optionally attach `index`/`version` of the node; include matching **`elevation`: −20** — or −30 for stacked B).
+   - First segment: straight **~40 m** along station axis.
+   - Continue with gentle `control` curves toward the next stub; end exactly on the next station’s node.
+4. `trace_network` between yard and stations to confirm physical connectivity.
+5. If native snap still fails: leave a short aligned stub at −20 m and ask the user to click the final weld in Underground View (send them this section + the MP4).
+6. Line Tool stops remain **user clicks** after tracks exist.
+
+
 ## 7. Uncertainties
 - Exact live costs/upkeeps drift by patch — wiki vs TheGamer already disagree.
 - Vehicle passenger capacity per train car is not pinned in the sources above — read prefab/tooltip.
@@ -245,3 +291,8 @@ Assume downtown / Ephrata districts + future link toward **Barney International 
 - Pinter CS2 notes (outside connection types — no subway edge)
 - Local: `cs2_guides/04_transit.md`, `TRAFFIC_GUIDE.md`, `INTERNATIONAL_AIRPORT_GUIDE.md`
 - Blueprint: `subway_network_blueprint.png`
+- Snap demo: `subway_station_snap_guide.mp4`
+- Paradox forum: snapping does not auto-correct elevation (stacked nets by design)
+- Reddit: enable Snap to Existing Geometry; draw out from each station and meet in the middle
+- Steam: underground station ~−20 m; match depth or overlap warnings
+- ProdigyGamers / road tools explain Snap to Existing Geometry, Guidelines, Cell Length, 90°
